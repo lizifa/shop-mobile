@@ -1,34 +1,42 @@
 <template>
-  <div class="index">
-    <van-tabbar v-model="active">
-      <van-tabbar-item icon="home-o">首页</van-tabbar-item>
-      <van-tabbar-item icon="search">疯抢中心</van-tabbar-item>
-      <van-tabbar-item icon="friends-o">金豆中心</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">我的订单</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">个人中心</van-tabbar-item>
-    </van-tabbar>
-  </div>
+	<van-tabbar v-model="curRouteIndex" :fixed="false">
+		<van-tabbar-item v-for="(route, index) in tabbars" :key="index" @click="tabClick(route, index)">
+			<van-icon :class="[`icon iconfont ${route.meta.classList}`]" slot="icon" :name="route.classList"></van-icon>
+			<span>{{ route.meta.text }}</span>
+		</van-tabbar-item>
+	</van-tabbar>
 </template>
 <script>
-import {Toast} from 'vant';
-
+import { routes } from '../../router/routes.js';
+let tabbars = routes.filter(v => v && v.meta && v.meta.useFooterBar) || [];
 export default {
-  name: 'FooterComponent',
-  data() {
-    return {
-      active: 0,
-    };
-  },
-  methods: {
-    routeJump() {
-      this.$router.push({name: 'login'});
-    },
-    onClickLeft() {
-      Toast('返回');
-    },
-    onClickRight() {
-      Toast('按钮');
-    },
-  },
+	name: 'FooterComponent',
+	data() {
+		return {
+			curRouteIndex: 1,
+			tabbars
+		};
+	},
+	methods: {
+		tabClick({ name }, index) {
+			this.$router.push({
+				name,
+				query: {
+					q: Date.now()
+				}
+			});
+		}
+	},
+	created() {
+		let curRouteIndex = this.tabbars.findIndex(v => v.name === this.$route.name) || 0;
+		this.curRouteIndex = curRouteIndex;
+	}
 };
 </script>
+<style lang="less">
+.van-tabbar-item__icon {
+	.icon {
+		font-size: 18px;
+	}
+}
+</style>
