@@ -6,7 +6,11 @@
     :left-arrow="infos.leftArrow"
     @click-left="onClickLeft"
     @click-right="onClickRight"
-  />
+  >
+    <template slot="left"></template>
+    <template slot="title"></template>
+    <template slot="right"></template>
+  </van-nav-bar>
 </template>
 <script>
 export default {

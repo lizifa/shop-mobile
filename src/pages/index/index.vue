@@ -4,7 +4,11 @@
       @click-left="onClickLeft"
       @click-right="onClickRight"
       :infos="headerData"
-    ></header-component>
+    >
+      <template slot="left">自定义标题</template>
+      <template slot="title">自定义标题</template>
+      <template slot="right">自定义标题</template>
+    </header-component>
     <footer-component></footer-component>
   </div>
 </template>
