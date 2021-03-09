@@ -39,7 +39,7 @@
 	</div>
 </template>
 <script>
-import FooterComponent from '../../components/app-footer';
+import FooterComponent from '@/components/app-footer';
 
 export default {
 	components: {

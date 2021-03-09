@@ -1,8 +1,8 @@
 import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
-import store from './store';
-import './vantUI';
+import App from '@/App.vue';
+import router from '@/router';
+import store from '@/store';
+import '@/vantUI';
 Vue.config.productionTip = false;
 
 let app = new Vue({

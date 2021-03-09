@@ -1,16 +1,25 @@
-import Vue from 'vue'
-import skeleton1 from './skeleton1.vue';
-import skeleton2 from './skeleton2.vue';
+import Vue from 'vue';
+import indexSkeleton from './components/indexSkeleton.vue';
+import rankSkeleton from './components/rankSkeleton.vue';
+import userSkeleton from './components/userSkeleton.vue';
+import orderSkeleton from './components/orderSkeleton.vue';
+import coinSkeleton from './components/coinSkeleton.vue';
 
 export default new Vue({
-  components: {
-    skeleton1,
-    skeleton2
-  },
-  template: `
+	components: {
+		indexSkeleton,
+		rankSkeleton,
+		userSkeleton,
+		orderSkeleton,
+		coinSkeleton
+	},
+	template: `
     <div>
-      <skeleton1 id="skeleton1" style="display:none"/>
-      <skeleton2 id="skeleton2" style="display:none"/>
+      <indexSkeleton id="indexSkeleton" style="display:none"/>
+      <rankSkeleton id="rankSkeleton" style="display:none"/>
+      <userSkeleton id="userSkeleton" style="display:none"/>
+      <orderSkeleton id="orderSkeleton" style="display:none"/>
+      <coinSkeleton id="coinSkeleton" style="display:none"/>
     </div>
   `
 });

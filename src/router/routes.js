@@ -63,5 +63,23 @@ export const routes = [
 			useFooterBar: false
 		},
 		component: () => import('../pages/login/index.vue')
+	},
+	{
+		path: '/user/addressEdit',
+		name: 'addressEdit',
+		meta: {
+			useFooterBar: false,
+			title: '地址编辑'
+		},
+		component: () => import('../pages/user/addressEdit.vue')
+	},
+	{
+		path: '/user/addressList',
+		name: 'addressList',
+		meta: {
+			useFooterBar: false,
+			title: '地址列表'
+		},
+		component: () => import('../pages/user/addressList.vue')
 	}
 ];

@@ -9,6 +9,7 @@ export default {
 </script>
 
 <style lang="less">
+@import '~@/App.less';
 .pages {
 	display: flex;
 	flex-direction: column;

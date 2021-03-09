@@ -7,7 +7,7 @@
 	</van-tabbar>
 </template>
 <script>
-import { routes } from '../../router/routes.js';
+import { routes } from '@/router/routes';
 let tabbars = routes.filter(v => v && v.meta && v.meta.useFooterBar) || [];
 export default {
 	name: 'FooterComponent',
