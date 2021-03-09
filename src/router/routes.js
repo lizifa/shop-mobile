@@ -11,7 +11,7 @@ export const routes = [
 		meta: {
 			useFooterBar: true,
 			classList: 'shouye1',
-			text: '首页'
+			title: '首页'
 		},
 		component: () => import('../pages/index/index.vue')
 	},
@@ -21,7 +21,7 @@ export const routes = [
 		meta: {
 			useFooterBar: true,
 			classList: 'paihangbang1',
-			text: '疯抢中心'
+			title: '疯抢中心'
 		},
 		component: () => import('../pages/rank/index.vue')
 	},
@@ -32,7 +32,7 @@ export const routes = [
 		meta: {
 			useFooterBar: true,
 			classList: 'jinbi1',
-			text: '金豆中心'
+			title: '金豆中心'
 		},
 		component: () => import('../pages/coin/index.vue')
 	},
@@ -42,7 +42,7 @@ export const routes = [
 		meta: {
 			useFooterBar: true,
 			classList: 'wodedingdan2',
-			text: '我的订单'
+			title: '我的订单'
 		},
 		component: () => import('../pages/order/index.vue')
 	},
@@ -52,7 +52,7 @@ export const routes = [
 		meta: {
 			useFooterBar: true,
 			classList: 'gerenzhongxin2',
-			text: '个人中心'
+			title: '个人中心'
 		},
 		component: () => import('../pages/user/index.vue')
 	},

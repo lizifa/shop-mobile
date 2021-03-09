@@ -1,23 +1,23 @@
 <template>
 	<div id="index">
-		<header-component @click-left="onClickLeft" @click-right="onClickRight" :infos="headerData" v-if="true">
-			<template slot="left">自定义标题</template>
-			<template slot="title">自定义标题</template>
-			<template slot="right">自定义标题</template>
-		</header-component>
-		<div class="wrap">1</div>
+		<header-component @click-left="onClickLeft" @click-right="onClickRight" :infos="headerData" v-if="true"></header-component>
+		<scroll-to-load-component className="wrap" @loadNext="loadNext">
+			<h1 v-for="item in 50" :key="item">{{ item }}</h1>
+		</scroll-to-load-component>
 		<footer-component></footer-component>
 	</div>
 </template>
 <script>
 import FooterComponent from '../../components/app-footer';
 import HeaderComponent from '../../components/app-header';
+import ScrollToLoadComponent from '../../components/scroll-to-load';
 import { Toast } from 'vant';
 export default {
 	name: 'AppHomePage',
 	components: {
 		FooterComponent,
-		HeaderComponent
+		HeaderComponent,
+		ScrollToLoadComponent
 	},
 	data() {
 		return {
@@ -34,6 +34,9 @@ export default {
 		},
 		onClickRight() {
 			Toast('编辑');
+		},
+		loadNext() {
+			Toast('加载下一页');
 		}
 	}
 };

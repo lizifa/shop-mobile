@@ -2,7 +2,7 @@
 	<van-tabbar v-model="curRouteIndex" :fixed="false">
 		<van-tabbar-item v-for="(route, index) in tabbars" :key="index" @click="tabClick(route, index)">
 			<van-icon :class="[`icon iconfont ${route.meta.classList}`]" slot="icon" :name="route.classList"></van-icon>
-			<span>{{ route.meta.text }}</span>
+			<span>{{ route.meta.title }}</span>
 		</van-tabbar-item>
 	</van-tabbar>
 </template>
