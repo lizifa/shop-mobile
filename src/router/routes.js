@@ -40,7 +40,7 @@ export const routes = [
 		path: '/order',
 		name: 'order',
 		meta: {
-			useFooterBar: true,
+			useFooterBar: false,
 			classList: 'wodedingdan2',
 			title: '我的订单'
 		},

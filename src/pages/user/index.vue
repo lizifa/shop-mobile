@@ -20,15 +20,19 @@
 					</van-row>
 					<van-row class="order-status">
 						<van-col span="6">
+							<van-icon class="icon iconfont shouye1" slot="icon" name="shouye1"></van-icon>
 							<p>待付款</p>
 						</van-col>
 						<van-col span="6">
+							<van-icon class="icon iconfont shouye1" slot="icon" name="shouye1"></van-icon>
 							<p>待发货</p>
 						</van-col>
 						<van-col span="6">
+							<van-icon class="icon iconfont shouye1" slot="icon" name="shouye1"></van-icon>
 							<p>待收货</p>
 						</van-col>
 						<van-col span="6">
+							<van-icon class="icon iconfont shouye1" slot="icon" name="shouye1"></van-icon>
 							<p>售后中</p>
 						</van-col>
 					</van-row>
@@ -152,6 +156,12 @@ export default {
 		box-sizing: border-box;
 		.order-infos {
 			display: flex;
+		}
+		.order-infos-right {
+			text-align: right;
+		}
+		.order-infos-left {
+			text-align: left;
 		}
 	}
 }

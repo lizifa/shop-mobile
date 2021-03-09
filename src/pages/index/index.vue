@@ -1,37 +1,51 @@
 <template>
 	<div id="index">
-		<header-component @click-left="onClickLeft" @click-right="onClickRight" :infos="headerData" v-if="false"></header-component>
-		<van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="fetchData" class="wrap good-list">
-			<li v-for="item in list" :key="item" :title="item">
-				<div>
-					<div class="img-box">
-						<van-image src="https://img01.yzcdn.cn/vant/cat.jpeg">
+		<template v-if="loading">
+			<div class="loading">
+				<img src="../../assets/others/ball-triangle.svg" width="60" alt="" />
+			</div>
+		</template>
+		<template v-else>
+			<header-component @click-left="onClickLeft" @click-right="onClickRight" :infos="headerData" v-if="false"></header-component>
+			<scroll-to-load-component className="wrap good-list" @loadNext="getLists">
+				<li v-for="(item, index) in queryData.list" :key="index">
+					<div>
+						<van-image :src="item.imgUrl">
 							<template v-slot:loading>
 								<van-loading type="spinner" size="20" />
 							</template>
 						</van-image>
+						<div class="infos">
+							<div class="van-ellipsis">{{ item.goodsName }}</div>
+							<div class="flex items-end">
+								<div class="color_primary bold mr2">
+									<span class="point">{{ item.originalPrice }}金豆</span><span class="orginal-price">+{{ item.price }}元</span>
+								</div>
+							</div>
+							<div class="goods-info-price flex">
+								<div class="sale-desc">{{ item.saleDesc }}</div>
+								<div class="price">￥{{ item.originalPrice }}</div>
+							</div>
+						</div>
 					</div>
-					<div class="infos">
-						<div class="goods-name">哈哈哈</div>
-						<div class="goods-name">899金币+199元</div>
-						<div class="goods-name">兑换热度</div>
-					</div>
-				</div>
-			</li>
-		</van-list>
-		<footer-component></footer-component>
+				</li>
+			</scroll-to-load-component>
+			<footer-component></footer-component>
+		</template>
 	</div>
 </template>
 <script>
 import FooterComponent from '@/components/app-footer';
 import HeaderComponent from '@/components/app-header';
+import ScrollToLoadComponent from '@/components/scroll-to-load';
+import { goodsList } from '@/assets/others/goods';
 import { Toast } from 'vant';
-
 export default {
 	name: 'AppHomePage',
 	components: {
 		FooterComponent,
-		HeaderComponent
+		HeaderComponent,
+		ScrollToLoadComponent
 	},
 	data() {
 		return {
@@ -40,9 +54,11 @@ export default {
 				leftText: '返回',
 				rightText: '编辑'
 			},
-			list: [],
-			loading: false,
-			finished: false
+			queryData: {
+				list: [],
+				page: 1
+			},
+			loading: true
 		};
 	},
 	methods: {
@@ -53,23 +69,13 @@ export default {
 			Toast('编辑');
 		},
 		getLists() {
-			for (let i = 0; i < 20; i++) {
-				this.list.push(this.list.length + 1);
-			}
-
-			// 加载状态结束
+			this.loading = true;
+			this.$set(this.queryData, 'list', goodsList);
 			this.loading = false;
-
-			// 数据全部加载完成
-			if (this.list.length >= 100) {
-				this.finished = true;
-			}
-		},
-		fetchData() {
-			setTimeout(() => {
-				this.getLists();
-			}, 1000);
 		}
+	},
+	mounted() {
+		this.getLists();
 	}
 };
 </script>
@@ -79,6 +85,7 @@ export default {
 		list-style: none;
 		margin: 0;
 		padding: 10px;
+		padding-bottom: 50px;
 		li {
 			box-sizing: border-box;
 			box-sizing: border-box;
@@ -103,11 +110,12 @@ export default {
 			border: 1px solid rgba(0, 0, 0, 0.1);
 			position: relative;
 		}
-		.img-box {
+		.van-image {
 			width: 100%;
 			background-color: rgba(0, 0, 0, 0.1);
 			position: relative;
-			img{
+			display: block;
+			img {
 				display: block;
 				margin: 0;
 			}
@@ -115,6 +123,59 @@ export default {
 		.infos {
 			padding: 10px;
 		}
+		.van-ellipsis {
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+		.items-end {
+			-webkit-box-align: end;
+			-ms-flex-align: end;
+			align-items: flex-end;
+		}
+
+		.flex {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+		}
+		.goods-info-price {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-pack: justify;
+			-ms-flex-pack: justify;
+			justify-content: space-between;
+		}
+		.sale-desc {
+			font-size: 0.5rem;
+			color: #ff3600;
+		}
+		.price {
+			text-decoration: line-through;
+			font-size: 12px;
+			color: #888;
+		}
+		.color_primary {
+			color: #e54635;
+		}
+		.point {
+			font-size: 16px;
+		}
+	}
+	.loading {
+		background: rgba(0, 0, 0, 0.1);
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 10;
+		width: 100px;
+		height: 100px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 10px;
 	}
 }
 </style>
