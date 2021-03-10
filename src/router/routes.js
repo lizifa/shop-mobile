@@ -19,7 +19,7 @@ export const routes = [
 		path: '/rank',
 		name: 'rank',
 		meta: {
-			useFooterBar: true,
+			useFooterBar: false,
 			classList: 'paihangbang1',
 			title: '疯抢中心'
 		},
@@ -30,7 +30,7 @@ export const routes = [
 		path: '/coin',
 		name: 'coin',
 		meta: {
-			useFooterBar: true,
+			useFooterBar: false,
 			classList: 'jinbi1',
 			title: '金豆中心'
 		},
@@ -81,5 +81,23 @@ export const routes = [
 			title: '地址列表'
 		},
 		component: () => import('../pages/user/addressList.vue')
+	},
+	{
+		path: '/detail',
+		name: 'detail',
+		meta: {
+			useFooterBar: false,
+			title: '商品详情'
+		},
+		component: () => import('../pages/detail')
+	},
+	{
+		path: '/cart',
+		name: 'cart',
+		meta: {
+			useFooterBar: false,
+			title: '购物车'
+		},
+		component: () => import('../pages/cart')
 	}
 ];

@@ -16,8 +16,24 @@ import { Tabbar,
     GoodsActionButton,
     Sku,
     Image as VanImage,
-    Loading 
+    Loading,
+    Tag,
+    CellGroup,
+    Swipe,
+    Toast,
+    SwipeItem,
+    Checkbox,
+    CheckboxGroup,
+    Card,
+    SubmitBar,
+    Search
 } from 'vant';
+
+Vue.use(Search);
+Vue.use(Checkbox);
+Vue.use(CheckboxGroup);
+Vue.use(Card);
+Vue.use(SubmitBar);
 
 Vue.use(VanImage);
 Vue.use(Sku);
@@ -38,3 +54,8 @@ Vue.use(PullRefresh);
 Vue.use(Cell);
 Vue.use(AddressEdit);
 Vue.use(AddressList);
+Vue.use(Tag);
+Vue.use(CellGroup);
+Vue.use(Swipe);
+Vue.use(Toast);
+Vue.use(SwipeItem);

@@ -1,44 +1,34 @@
 <template>
 	<div id="user">
-		<div class="wrap">
-			<div class="section-header">
-				<div class="bg"></div>
-				<div class="floatBox1">
-					<div class="userinfo">
-						<div class="avarar"></div>
-						<div class="nickname">小书包</div>
-					</div>
-				</div>
-				<div class="section-pay-infos">
-					<van-row class="order-infos">
-						<van-col span="12" class="order-infos-left">
-							<span>我的订单</span>
-						</van-col>
-						<van-col span="12" class="order-infos-right">
-							<span>全部订单</span>
-						</van-col>
-					</van-row>
-					<van-row class="order-status">
-						<van-col span="6">
-							<van-icon class="icon iconfont shouye1" slot="icon" name="shouye1"></van-icon>
-							<p>待付款</p>
-						</van-col>
-						<van-col span="6">
-							<van-icon class="icon iconfont shouye1" slot="icon" name="shouye1"></van-icon>
-							<p>待发货</p>
-						</van-col>
-						<van-col span="6">
-							<van-icon class="icon iconfont shouye1" slot="icon" name="shouye1"></van-icon>
-							<p>待收货</p>
-						</van-col>
-						<van-col span="6">
-							<van-icon class="icon iconfont shouye1" slot="icon" name="shouye1"></van-icon>
-							<p>售后中</p>
-						</van-col>
-					</van-row>
-				</div>
-			</div>
-		</div>
+		<img class="user-poster" src="https://img.yzcdn.cn/public_files/2017/10/23/8690bb321356070e0b8c4404d087f8fd.png" />
+		<van-row class="user-links">
+			<van-col span="6">
+				<van-icon name="pending-payment" />
+				待付款
+			</van-col>
+			<van-col span="6">
+				<van-icon name="records" />
+				待接单
+			</van-col>
+			<van-col span="6">
+				<van-icon name="tosend" />
+				待发货
+			</van-col>
+			<van-col span="6">
+				<van-icon name="logistics" />
+				已发货
+			</van-col>
+		</van-row>
+
+		<van-cell-group class="user-group">
+			<van-cell icon="records" title="全部订单" is-link />
+		</van-cell-group>
+
+		<van-cell-group>
+			<van-cell icon="points" title="我的积分" is-link />
+			<van-cell icon="gold-coin-o" title="我的优惠券" is-link />
+			<van-cell icon="gift-o" title="我收到的礼物" is-link />
+		</van-cell-group>
 		<footer-component></footer-component>
 	</div>
 </template>
@@ -52,116 +42,23 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-#user {
-	background: rgba(0, 0, 0, 0.1);
-	.section-header {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		z-index: 2;
-		.floatBox1 {
-			position: relative;
-			overflow: hidden;
-			box-sizing: border-box;
-			text-align: center;
-		}
-		.headerCourse {
-			height: 20px;
-			font-size: 36px;
-			font-weight: 400;
-			color: #ffffff;
-			line-height: 20px;
-			text-align: center;
-		}
-		.userinfo {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			margin-top: 16px;
-		}
-
-		.avarar {
-			width: 50px;
-			height: 50px;
-			border: 2px solid rgba(255, 255, 255, 0.65);
-			border-radius: 50%;
-			overflow: hidden;
-			margin-right: 14px;
-
-			img {
-				width: 100%;
-			}
-		}
-
-		.nickname {
-			font-size: 28px;
-			font-weight: 600;
-			color: #ffffff;
-			line-height: 40px;
-			margin-right: 20px;
-			max-width: 300px;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-		}
-		.bg {
-			height: 150px;
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 0;
-			width: 100%;
-			overflow-x: hidden;
-
-			&:before {
-				position: absolute;
-				left: 50%;
-				bottom: 15px;
-				background: #66c9ff;
-				content: '';
-				display: block;
-				height: 2.666667rem;
-				-webkit-border-radius: 50%;
-				border-radius: 50%;
-				width: 104%;
-				transform: translateX(-50%);
-				// z-index: -2;
-			}
-
-			&:after {
-				position: absolute;
-				left: 0;
-				top: 0;
-				background: #66c9ff;
-				content: '';
-				display: block;
-				height: 80%;
-				width: 100%;
-				// z-index: -2;
-			}
-		}
+.user {
+	&-poster {
+		width: 100%;
+		height: 53vw;
+		display: block;
 	}
-	.section-pay-infos {
-		width: calc(100% - 20px);
-		background: #ffffff;
-		box-shadow: 0px 20px 20px 0px rgba(128, 142, 150, 0.08);
-		border-radius: 10px;
-		position: relative;
-		margin-top: 20px;
-		display: flex;
-		flex-direction: column;
-		position: relative;
-		padding: 10px;
-		box-sizing: border-box;
-		.order-infos {
-			display: flex;
-		}
-		.order-infos-right {
-			text-align: right;
-		}
-		.order-infos-left {
-			text-align: left;
+	&-group {
+		margin-bottom: 15px;
+	}
+	&-links {
+		padding: 15px 0;
+		font-size: 12px;
+		text-align: center;
+		background-color: #fff;
+		.van-icon {
+			display: block;
+			font-size: 24px;
 		}
 	}
 }
