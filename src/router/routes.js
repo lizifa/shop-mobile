@@ -37,14 +37,14 @@ export const routes = [
 		component: () => import('../pages/coin/index.vue')
 	},
 	{
-		path: '/order',
-		name: 'order',
+		path: '/cart',
+		name: 'cart',
 		meta: {
-			useFooterBar: false,
-			classList: 'wodedingdan2',
-			title: '我的订单'
+			useFooterBar: true,
+			title: '购物车',
+			classList: 'gouwuche'
 		},
-		component: () => import('../pages/order/index.vue')
+		component: () => import('../pages/cart')
 	},
 	{
 		path: '/user',
@@ -91,13 +91,15 @@ export const routes = [
 		},
 		component: () => import('../pages/detail')
 	},
+
 	{
-		path: '/cart',
-		name: 'cart',
+		path: '/user/order',
+		name: 'order',
 		meta: {
 			useFooterBar: false,
-			title: '购物车'
+			classList: 'wodedingdan2',
+			title: '我的订单'
 		},
-		component: () => import('../pages/cart')
+		component: () => import('../pages/user/order.vue')
 	}
 ];

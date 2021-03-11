@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="format-detection" content="address=no" />
+		<meta name="renderer" content="webkit" />
+		<meta name="baidu-site-verification" content="QsqxxctGpZ" />
 		<title>小书包</title>
-		<link rel="stylesheet" href="//at.alicdn.com/t/font_280007_ri825nvt0jg.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_280007_y8c9bv70jso.css" />
 		<% for (var jsFilePath of htmlWebpackPlugin.files.js) { %>
 		<link rel="preload" href="<%= jsFilePath %>" as="script" />
 		<% } %> <% for (var cssFilePath of htmlWebpackPlugin.files.css) { %>
 		<link rel="preload" href="<%= cssFilePath %>" as="style" onload="this.onload=null;this.rel='stylesheet';window.STYLE_READY=1;window.mountApp&&window.mountApp();" />
 		<noscript><link rel="stylesheet" href="<%= cssFilePath %>"/></noscript>
 		<% } %>
+
 		<script>
 			!(function(t) {
 				'use strict';

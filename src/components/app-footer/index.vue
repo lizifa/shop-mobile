@@ -1,10 +1,12 @@
 <template>
-	<van-tabbar v-model="curRouteIndex">
-		<van-tabbar-item v-for="(route, index) in tabbars" :key="index" @click="tabClick(route, index)">
-			<van-icon :class="[`icon iconfont ${route.meta.classList}`]" slot="icon" :name="route.classList"></van-icon>
-			<span>{{ route.meta.title }}</span>
-		</van-tabbar-item>
-	</van-tabbar>
+	<div class="app-fotter">
+		<van-tabbar v-model="curRouteIndex" :fixed="false">
+			<van-tabbar-item v-for="(route, index) in tabbars" :key="index" @click="tabClick(route, index)">
+				<van-icon :class="[`icon iconfont ${route.meta.classList}`]" slot="icon" :name="route.classList"></van-icon>
+				<span>{{ route.meta.title }}</span>
+			</van-tabbar-item>
+		</van-tabbar>
+	</div>
 </template>
 <script>
 import { routes } from '@/router/routes';
@@ -34,9 +36,15 @@ export default {
 };
 </script>
 <style lang="less">
-.van-tabbar-item__icon {
-	.icon {
-		font-size: 18px;
+.app-fotter {
+	.van-tabbar {
+		position: relative;
+		box-shadow: 0 0 10px 0 hsla(0, 6%, 58%, 0.6);
+	}
+	.van-tabbar-item__icon {
+		.icon {
+			font-size: 18px;
+		}
 	}
 }
 </style>

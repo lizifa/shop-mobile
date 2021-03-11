@@ -24,10 +24,8 @@
 	</div>
 </template>
 <script>
-import { routes } from '@/router/routes';
-let tabbars = routes.filter(v => v && v.meta && v.meta.useFooterBar) || [];
 export default {
-	name: 'FooterComponent',
+	name: 'GoodList',
 	props: {
 		list: {
 			type: Array,
@@ -51,7 +49,6 @@ export default {
 	list-style: none;
 	margin: 0;
 	padding: 10px;
-	padding-bottom: 50px;
 	li {
 		box-sizing: border-box;
 		box-sizing: border-box;

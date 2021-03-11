@@ -70,21 +70,3 @@ export default {
 	}
 };
 </script>
-<style lang="less">
-#index {
-	.loading {
-		background: rgba(0, 0, 0, 0.1);
-		position: fixed;
-		left: 50%;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		z-index: 10;
-		width: 100px;
-		height: 100px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border-radius: 10px;
-	}
-}
-</style>

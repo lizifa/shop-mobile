@@ -38,18 +38,20 @@
 			<van-goods-action-icon icon="cart-o" @click="onClickCart">
 				购物车
 			</van-goods-action-icon>
-			<van-goods-action-button type="warning" @click="sorry">
+			<van-goods-action-button type="warning" @click="onBuyClicked">
 				加入购物车
 			</van-goods-action-button>
-			<van-goods-action-button type="danger" @click="sorry">
+			<van-goods-action-button type="danger" @click="onBuyClicked">
 				立即购买
 			</van-goods-action-button>
 		</van-goods-action>
+		<van-sku v-model="showBase" :sku="skuData.sku" :goods="skuData.goods_info" :goods-id="skuData.goods_id" :hide-stock="skuData.sku.hide_stock" :quota="skuData.quota" :quota-used="skuData.quota_used" :initial-sku="initialSku" reset-stepper-on-hide reset-selected-sku-on-hide disable-stepper-input :close-on-click-overlay="closeOnClickOverlay" :custom-sku-validator="customSkuValidator" @buy-clicked="onBuyClicked" @add-cart="onAddCartClicked" />
 	</div>
 </template>
 
 <script>
 import { Toast } from 'vant';
+import skuData from '@/assets/others/skuData';
 export default {
 	data() {
 		return {
@@ -59,7 +61,19 @@ export default {
 				express: '免运费',
 				remain: 19,
 				thumb: ['https://img.yzcdn.cn/public_files/2017/10/24/e5a5a02309a41f9f5def56684808d9ae.jpeg', 'https://img.yzcdn.cn/public_files/2017/10/24/1791ba14088f9c2be8c610d0a6cc0f93.jpeg']
-			}
+			},
+			skuData: skuData,
+			showBase: false,
+			showCustom: false,
+			showStepper: false,
+			showSoldout: false,
+			closeOnClickOverlay: true,
+			initialSku: {
+				s1: '30349',
+				s2: '1193',
+				selectedNum: 3
+			},
+			customSkuValidator: () => '请选择xxx!'
 		};
 	},
 	methods: {
@@ -71,6 +85,15 @@ export default {
 		},
 		sorry() {
 			Toast('暂无后续逻辑~');
+		},
+		onBuyClicked(data) {
+			// this.$toast('buy:' + JSON.stringify(data));
+			// console.log(JSON.stringify(data));
+			this.showBase = true;
+		},
+
+		onAddCartClicked(data) {
+			this.$toast('add cart:' + JSON.stringify(data));
 		}
 	}
 };
