@@ -26,7 +26,8 @@ import { Tabbar,
     CheckboxGroup,
     Card,
     SubmitBar,
-    Search
+    Search,
+    Skeleton
 } from 'vant';
 
 Vue.use(Search);
@@ -34,7 +35,7 @@ Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
 Vue.use(Card);
 Vue.use(SubmitBar);
-
+Vue.use(Skeleton);
 Vue.use(VanImage);
 Vue.use(Sku);
 Vue.use(Loading);

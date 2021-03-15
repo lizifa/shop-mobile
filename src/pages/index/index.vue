@@ -1,21 +1,17 @@
 <template>
 	<div id="index">
-		<template v-if="loading">
-			<div class="loading">
-				<img src="../../assets/others/ball-triangle.svg" width="60" alt="" />
-			</div>
-		</template>
-		<template v-else>
-			<!-- <van-search placeholder="请输入商品名称" v-model="keyword" /> -->
-			<van-search v-model="keyword" show-action @search="onSearch">
-				<div slot="action" @click="onSearch">搜索</div>
-			</van-search>
-			<header-component @click-left="onClickLeft" @click-right="onClickRight" :infos="headerData" v-if="false"></header-component>
-			<scroll-to-load-component className="wrap good-list" @loadNext="getLists">
+		<van-search v-model="keyword" show-action @search="onSearch">
+			<div slot="action" @click="onSearch">搜索</div>
+		</van-search>
+		<header-component @click-left="onClickLeft" @click-right="onClickRight" :infos="headerData" v-if="false"></header-component>
+		<scroll-to-load-component className="wrap good-list" @loadNext="getLists">
+			<keep-alive>
+				<van-skeleton title="11" :row="10" :loading="loading" :animate="true" :row-width="'100%'">
 				<GoodsListComponent :list="queryData.list"></GoodsListComponent>
-			</scroll-to-load-component>
-			<footer-component></footer-component>
-		</template>
+				</van-skeleton>
+			</keep-alive>
+		</scroll-to-load-component>
+		<footer-component></footer-component>
 	</div>
 </template>
 <script>
@@ -60,9 +56,13 @@ export default {
 			Toast('编辑');
 		},
 		getLists() {
-			this.loading = true;
+			if (this.queryData.list.length < 0) {
+				this.loading = true;
+			}
 			this.$set(this.queryData, 'list', goodsList);
-			this.loading = false;
+			setTimeout(() => {
+				this.loading = false;
+			}, 2000);
 		}
 	},
 	mounted() {
