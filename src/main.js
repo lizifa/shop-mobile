@@ -1,24 +1,21 @@
-import Vue from 'vue';
-import App from '@/App.vue';
-import router from '@/router';
-import store from '@/store';
-import '@/vantUI';
-Vue.config.productionTip = false;
-
-let app = new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-});
-
-window.mountApp = () => {
-  app.$mount('#app');
+import store from './store';
+import router from './router';
+import 'lib-flexible/flexible';
+import { app } from './bootstrap';
+import './vantUI';
+// 全局过滤器
+app.config.globalProperties.$filters = {
+    prefix(url) {
+        if (url && url.startsWith('http')) {
+            return url;
+        } else {
+            url = `http://47.99.134.126:28019${url}`;
+            return url;
+        }
+    }
 };
 
-if (process.env.NODE_ENV === 'production') {
-  if (window.STYLE_READY) {
-    window.mountApp();
-  }
-} else {
-  window.mountApp();
-}
+app.use(router);
+app.use(store);
+
+app.mount('#app');
