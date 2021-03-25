@@ -15,8 +15,20 @@
         <span>{{ detail.createTime }}</span>
       </div>
       <!-- <van-button v-if="[1,2,3].includes(detail.orderStatus)" style="margin-bottom: 10px" color="#1baeae" block @click="confirmOrder(detail.orderNo)">确认订单</van-button> -->
-      <van-button v-if="detail.orderStatus == 0" style="margin-bottom: 10px" color="#1baeae" block @click="showPayFn">去支付</van-button>
-      <van-button v-if="!(detail.orderStatus < 0 || detail.orderStatus == 4)" block @click="handleCancelOrder(detail.orderNo)">取消订单</van-button>
+      <van-button
+        v-if="detail.orderStatus == 0"
+        style="margin-bottom: 10px"
+        color="#1baeae"
+        block
+        @click="showPayFn"
+        >去支付</van-button
+      >
+      <van-button
+        v-if="!(detail.orderStatus < 0 || detail.orderStatus == 4)"
+        block
+        @click="handleCancelOrder(detail.orderNo)"
+        >取消订单</van-button
+      >
     </div>
     <div class="order-price">
       <div class="price-item">
@@ -44,8 +56,19 @@
       :style="{ height: '24%' }"
     >
       <div :style="{ width: '90%', margin: '0 auto', padding: '20px 0' }">
-        <van-button :style="{ marginBottom: '10px' }" color="#1989fa" block @click="handlePayOrder(detail.orderNo, 1)">支付宝支付</van-button>
-        <van-button color="#4fc08d" block @click="handlePayOrder(detail.orderNo, 2)">微信支付</van-button>
+        <van-button
+          :style="{ marginBottom: '10px' }"
+          color="#1989fa"
+          block
+          @click="handlePayOrder(detail.orderNo, 1)"
+          >支付宝支付</van-button
+        >
+        <van-button
+          color="#4fc08d"
+          block
+          @click="handlePayOrder(detail.orderNo, 2)"
+          >微信支付</van-button
+        >
       </div>
     </van-popup>
   </div>
@@ -54,7 +77,12 @@
 <script>
 import { reactive, toRefs, onMounted } from 'vue'
 import sHeader from '@/components/SimpleHeader'
-import { getOrderDetail, cancelOrder, confirmOrder, payOrder } from '@/apis/order'
+import {
+  getOrderDetail,
+  cancelOrder,
+  confirmOrder,
+  payOrder
+} from '@/apis/order'
 import { Dialog, Toast } from 'vant'
 import { useRoute } from 'vue-router'
 export default {
@@ -77,41 +105,45 @@ export default {
       Toast.loading({
         message: '加载中...',
         forbidClick: true
-      });
+      })
       const { id } = route.query
       const { data } = await getOrderDetail(id)
       state.detail = data
       Toast.clear()
     }
 
-    const handleCancelOrder = (id) => {
+    const handleCancelOrder = id => {
       Dialog.confirm({
-        title: '确认取消订单？',
-      }).then(() => {
-        cancelOrder(id).then(res => {
-          if (res.resultCode == 200) {
-            Toast('删除成功')
-            init()
-          }
+        title: '确认取消订单？'
+      })
+        .then(() => {
+          cancelOrder(id).then(res => {
+            if (res.resultCode == 200) {
+              Toast('删除成功')
+              init()
+            }
+          })
         })
-      }).catch(() => {
-        // on cancel
-      });
+        .catch(() => {
+          // on cancel
+        })
     }
 
-    const handleConfirmOrder = (id) => {
+    const handleConfirmOrder = id => {
       Dialog.confirm({
-        title: '是否确认订单？',
-      }).then(() => {
-        confirmOrder(id).then(res => {
-          if (res.resultCode == 200) {
-            Toast('确认成功')
-            init()
-          }
+        title: '是否确认订单？'
+      })
+        .then(() => {
+          confirmOrder(id).then(res => {
+            if (res.resultCode == 200) {
+              Toast('确认成功')
+              init()
+            }
+          })
         })
-      }).catch(() => {
-        // on cancel
-      });
+        .catch(() => {
+          // on cancel
+        })
     }
 
     const showPayFn = () => {
@@ -137,50 +169,47 @@ export default {
       handlePayOrder,
       close
     }
-
   }
 }
 </script>
 
 <style lang="less" scoped>
-  .order-detail-box {
-    background: #f7f7f7;
-    .order-status {
-      background: #fff;
-      padding: 20px;
-      font-size: 15px;
-      .status-item {
-        margin-bottom: 10px;
-        label {
-          color: #999;
-        }
-        span {
-
-        }
+.order-detail-box {
+  background: #f7f7f7;
+  .order-status {
+    background: #fff;
+    padding: 20px;
+    font-size: 15px;
+    .status-item {
+      margin-bottom: 10px;
+      label {
+        color: #999;
       }
-    }
-    .order-price {
-      background: #fff;
-      margin: 20px 0;
-      padding: 20px;
-      font-size: 15px;
-      .price-item {
-        margin-bottom: 10px;
-        label {
-          color: #999;
-        }
-        span {
-
-        }
+      span {
       }
-    }
-    .van-card {
-      margin-top: 0;
-    }
-    .van-card__content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
   }
+  .order-price {
+    background: #fff;
+    margin: 20px 0;
+    padding: 20px;
+    font-size: 15px;
+    .price-item {
+      margin-bottom: 10px;
+      label {
+        color: #999;
+      }
+      span {
+      }
+    }
+  }
+  .van-card {
+    margin-top: 0;
+  }
+  .van-card__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
 </style>

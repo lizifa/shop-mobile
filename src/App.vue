@@ -23,7 +23,7 @@ export default {
         // 由次级到主级
         state.transitionName = 'slide-right'
       } else {
-        state.transitionName = ''   // 同级无过渡效果
+        state.transitionName = '' // 同级无过渡效果
       }
     })
 
@@ -35,7 +35,8 @@ export default {
 </script>
 
 <style lang="less">
-html, body {
+html,
+body {
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -49,41 +50,41 @@ html, body {
   color: #2c3e50;
 }
 
-.router-view{
-    width: 100%;
-    height: auto;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: 0 auto;
-    -webkit-overflow-scrolling: touch;
+.router-view {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: 0 auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .slide-right-enter-active,
 .slide-right-leave-active,
 .slide-left-enter-active,
-.slide-left-leave-active{
-    height: 100%;
-    will-change: transform;
-    transition: all 500ms;
-    position: absolute;
-    backface-visibility: hidden;
+.slide-left-leave-active {
+  height: 100%;
+  will-change: transform;
+  transition: all 500ms;
+  position: absolute;
+  backface-visibility: hidden;
 }
-.slide-right-enter{
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
 }
-.slide-right-leave-active{
-    opacity: 0;
-    transform: translate3d(100%, 0, 0);
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
 }
-.slide-left-enter{
-    opacity: 0;
-    transform: translate3d(100%, 0, 0);
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
 }
-.slide-left-leave-active{
-    opacity: 0;
-    transform: translate3d(-100%, 0, 0);
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
 }
 
 .van-badge--fixed {

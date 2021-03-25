@@ -72,21 +72,21 @@ export default {
         click: true
       })
       this.bs.on('scroll', () => {
-          console.log('scrolling-')
-        })
-        this.bs.on('scrollEnd', () => {
-          console.log('scrollingEnd')
-        })
-    } 
+        console.log('scrolling-')
+      })
+      this.bs.on('scrollEnd', () => {
+        console.log('scrollingEnd')
+      })
+    }
   }
 }
 </script>
 
 <style lang="less" scoped>
-  .scroll-wrapper {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    overflow-y: scroll;
-  }
+.scroll-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
 </style>

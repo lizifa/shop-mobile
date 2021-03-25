@@ -67,14 +67,14 @@
 </template>
 
 <script>
-import { reactive, onMounted, toRefs, computed } from "vue"
-import sHeader from "@/components/SimpleHeader"
-import { getByCartItemIds } from "@/apis/cart"
-import { getDefaultAddress, getAddressDetail } from "@/apis/address"
-import { createOrder, payOrder } from "@/apis/order"
-import { setLocal, getLocal } from "@/utils/utils"
-import { Toast } from "vant"
-import { useRoute, useRouter } from "vue-router"
+import { reactive, onMounted, toRefs, computed } from 'vue'
+import sHeader from '@/components/SimpleHeader'
+import { getByCartItemIds } from '@/apis/cart'
+import { getDefaultAddress, getAddressDetail } from '@/apis/address'
+import { createOrder, payOrder } from '@/apis/order'
+import { setLocal, getLocal } from '@/utils/utils'
+import { Toast } from 'vant'
+import { useRoute, useRouter } from 'vue-router'
 export default {
   components: {
     sHeader
@@ -86,7 +86,7 @@ export default {
       cartList: [],
       address: {},
       showPay: false,
-      orderNo: "",
+      orderNo: '',
       cartItemIds: []
     })
 
@@ -95,21 +95,21 @@ export default {
     })
 
     const init = async () => {
-      Toast.loading({ message: "加载中...", forbidClick: true })
+      Toast.loading({ message: '加载中...', forbidClick: true })
       const { addressId, cartItemIds } = route.query
       const _cartItemIds = cartItemIds
         ? JSON.parse(cartItemIds)
-        : JSON.parse(getLocal("cartItemIds"))
-      console.log("cartItemIds", cartItemIds)
-      setLocal("cartItemIds", JSON.stringify(_cartItemIds))
+        : JSON.parse(getLocal('cartItemIds'))
+      console.log('cartItemIds', cartItemIds)
+      setLocal('cartItemIds', JSON.stringify(_cartItemIds))
       const { data: list } = await getByCartItemIds({
-        cartItemIds: _cartItemIds.join(",")
+        cartItemIds: _cartItemIds.join(',')
       })
       const { data: address } = addressId
         ? await getAddressDetail(addressId)
         : await getDefaultAddress()
       if (!address) {
-        router.push({ path: "/address" })
+        router.push({ path: '/address' })
         return
       }
       state.cartList = list
@@ -119,16 +119,16 @@ export default {
 
     const goTo = () => {
       router.push({
-        path: "/address",
+        path: '/address',
         query: {
           cartItemIds: JSON.stringify(state.cartItemIds),
-          from: "create-order"
+          from: 'create-order'
         }
       })
     }
 
     const deleteLocal = () => {
-      setLocal("cartItemIds", "")
+      setLocal('cartItemIds', '')
     }
 
     const handleCreateOrder = async () => {
@@ -137,20 +137,20 @@ export default {
         cartItemIds: state.cartList.map(item => item.cartItemId)
       }
       const { data } = await createOrder(params)
-      setLocal("cartItemIds", "")
+      setLocal('cartItemIds', '')
       state.orderNo = data
       state.showPay = true
     }
 
     const close = () => {
-      router.push({ path: "/order" })
+      router.push({ path: '/order' })
     }
 
     const handlePayOrder = async type => {
       await payOrder({ orderNo: state.orderNo, payType: type })
-      Toast.success("支付成功")
+      Toast.success('支付成功')
       setTimeout(() => {
-        router.push({ path: "/order" })
+        router.push({ path: '/order' })
       }, 2000)
     }
 
@@ -225,7 +225,7 @@ export default {
         transparent 50%
       );
       background-size: 80px;
-      content: "";
+      content: '';
     }
   }
   .good {

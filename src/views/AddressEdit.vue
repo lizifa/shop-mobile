@@ -20,7 +20,12 @@
 import { reactive, onMounted, toRefs } from 'vue'
 import { Toast } from 'vant'
 import sHeader from '@/components/SimpleHeader'
-import { addAddress, EditAddress, DeleteAddress, getAddressDetail } from '@/apis/address'
+import {
+  addAddress,
+  EditAddress,
+  DeleteAddress,
+  getAddressDetail
+} from '@/apis/address'
 import { tdist } from '@/utils/utils'
 import { useRoute, useRouter } from 'vue-router'
 export default {
@@ -52,7 +57,7 @@ export default {
         _province_list[p.id] = p.text
         tdist.getLev2(p.id).forEach(c => {
           _city_list[c.id] = c.text
-          tdist.getLev3(c.id).forEach(q => _county_list[q.id] = q.text)
+          tdist.getLev3(c.id).forEach(q => (_county_list[q.id] = q.text))
         })
       })
       state.areaList.province_list = _province_list
@@ -71,12 +76,19 @@ export default {
           // 先找出当前对应的区
           if (text == addressDetail.regionName) {
             // 找到区对应的几个省份
-            const provinceIndex = province.findIndex(item => item.id.substr(0, 2) == id.substr(0, 2))
+            const provinceIndex = province.findIndex(
+              item => item.id.substr(0, 2) == id.substr(0, 2)
+            )
             // 找到区对应的几个市区
             // eslint-disable-next-line no-unused-vars
-            const cityItem = Object.entries(state.areaList.city_list).filter(([cityId, cityName]) => cityId.substr(0, 4) == id.substr(0, 4))[0]
+            const cityItem = Object.entries(state.areaList.city_list).filter(
+              ([cityId, cityName]) => cityId.substr(0, 4) == id.substr(0, 4)
+            )[0]
             // 对比找到的省份和接口返回的省份是否相等，因为有一些区会重名
-            if (province[provinceIndex].text == addressDetail.provinceName && cityItem[1] == addressDetail.cityName) {
+            if (
+              province[provinceIndex].text == addressDetail.provinceName &&
+              cityItem[1] == addressDetail.cityName
+            ) {
               _areaCode = id
             }
           }
@@ -95,7 +107,7 @@ export default {
       }
     })
 
-    const onSave = async (content) => {
+    const onSave = async content => {
       const params = {
         userName: content.name,
         userPhone: content.tel,
@@ -103,12 +115,12 @@ export default {
         cityName: content.city,
         regionName: content.county,
         detailAddress: content.addressDetail,
-        defaultFlag: content.isDefault ? 1 : 0,
+        defaultFlag: content.isDefault ? 1 : 0
       }
       if (state.type == 'edit') {
         params['addressId'] = state.addressId
       }
-      await state.type == 'add' ? addAddress(params) : EditAddress(params)
+      ;(await state.type) == 'add' ? addAddress(params) : EditAddress(params)
       Toast('保存成功')
       setTimeout(() => {
         router.back()
@@ -133,22 +145,22 @@ export default {
 </script>
 
 <style lang="less">
-  .edit {
-    .van-field__body {
-      textarea {
-        height: 26px!important;
-      }
+.edit {
+  .van-field__body {
+    textarea {
+      height: 26px !important;
     }
   }
-  .address-edit-box {
-    .van-address-edit {
-      .van-button--danger {
-        background: @primary;
-        border-color: @primary;
-      }
-      .van-switch--on {
-        background: @primary;
-      }
+}
+.address-edit-box {
+  .van-address-edit {
+    .van-button--danger {
+      background: @primary;
+      border-color: @primary;
+    }
+    .van-switch--on {
+      background: @primary;
     }
   }
+}
 </style>

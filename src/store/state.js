@@ -1,3 +1,3 @@
 export default {
-    cartCount: 0
+  cartCount: 0
 }
