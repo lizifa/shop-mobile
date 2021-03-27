@@ -1,6 +1,10 @@
 <template>
-  <div style="display: none">
-    <header class="home-header wrap" :class="{ active: headerScroll }">
+  <div>
+    <header
+      class="home-header wrap"
+      :class="{ active: headerScroll }"
+      v-if="false"
+    >
       <router-link tag="i" to="./category"
         ><i class="nbicon nbmenu2"></i
       ></router-link>
@@ -98,12 +102,9 @@ import { reactive, onMounted, toRefs, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import swiper from '@/components/Swiper'
 import navBar from '@/components/NavBar'
-import { getHome } from '@/apis/home'
+import { getHome } from '@/service/home'
 import { getLocal } from '@/utils/utils'
 import { Toast } from 'vant'
-import { useStore } from 'vuex'
-const store = useStore()
-console.log(store)
 export default {
   name: 'home',
   components: {
@@ -235,10 +236,11 @@ export default {
   left: 0;
   top: 0;
   .wh(100%, 50px);
-  .fj();
+  display: flex;
+  justify-content: center;
   line-height: 50px;
   padding: 0 15px;
-  .boxSizing();
+  box-sizing: border-box;
   font-size: 15px;
   color: #fff;
   z-index: 10000;
@@ -365,13 +367,13 @@ export default {
     flex-shrink: 0;
     flex-wrap: wrap;
     width: 100%;
-    .boxSizing();
+    box-sizing: border-box;
     .floor-category {
       width: 50%;
       padding: 10px;
       border-right: 1px solid #dcdcdc;
       border-bottom: 1px solid #dcdcdc;
-      .boxSizing();
+      box-sizing: border-box;
       &:nth-child(2n) {
         border-right: none;
       }
@@ -385,7 +387,8 @@ export default {
         }
       }
       .floor-products {
-        .fj();
+        display: flex;
+        justify-content: center;
         width: 100%;
         img {
           .wh(65px, 65px);

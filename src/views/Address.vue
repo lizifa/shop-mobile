@@ -29,7 +29,7 @@
 <script>
 import { reactive, toRefs, onMounted } from 'vue'
 import sHeader from '@/components/SimpleHeader'
-import { getAddressList } from '@/apis/address'
+import { getAddressList } from '@/service/address'
 import { useRoute, useRouter } from 'vue-router'
 export default {
   components: {

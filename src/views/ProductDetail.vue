@@ -57,8 +57,8 @@
 import { reactive, onMounted, computed, toRefs, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
-import { getDetail } from '@/apis/good'
-import { addCart } from '@/apis/cart'
+import { getDetail } from '@/service/good'
+import { addCart } from '@/service/cart'
 import sHeader from '@/components/SimpleHeader'
 import { Toast } from 'vant'
 import { prefix } from '@/utils/utils'
@@ -112,7 +112,6 @@ export default {
     }
 
     const count = computed(() => {
-      console.log(111, store.state.cartCount)
       return store.state.cartCount
     })
 
@@ -138,11 +137,12 @@ export default {
     top: 0;
     left: 0;
     z-index: 10000;
-    .fj();
+    display: flex;
+    justify-content: center;
     .wh(100%, 44px);
     line-height: 44px;
     padding: 0 10px;
-    .boxSizing();
+    box-sizing: border-box;
     color: #252525;
     background: #fff;
     border-bottom: 1px solid #dcdcdc;
@@ -176,7 +176,8 @@ export default {
         padding: 5px 0;
       }
       .product-price {
-        .fj();
+        display: flex;
+        justify-content: center;
         span:nth-child(1) {
           color: #f63515;
           font-size: 22px;
@@ -191,7 +192,8 @@ export default {
       width: 100%;
       padding-bottom: 50px;
       ul {
-        .fj();
+        display: flex;
+        justify-content: center;
         width: 100%;
         margin: 10px 0;
         li {

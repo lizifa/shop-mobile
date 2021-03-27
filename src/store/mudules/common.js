@@ -1,4 +1,4 @@
-import { getCart } from '@/apis/cart'
+import { getCart } from '@/service/cart'
 export const common = {
   namespaced: true,
   state: {

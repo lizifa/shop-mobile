@@ -61,7 +61,8 @@ export default {
   -webkit-transform: translateZ(0);
   .nav-list {
     width: 100%;
-    .fj();
+    display: flex;
+    justify-content: center;
     flex-direction: row;
     padding: 0;
     .nav-list-item {

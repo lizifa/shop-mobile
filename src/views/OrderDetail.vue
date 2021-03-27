@@ -82,7 +82,7 @@ import {
   cancelOrder,
   confirmOrder,
   payOrder
-} from '@/apis/order'
+} from '@/service/order'
 import { Dialog, Toast } from 'vant'
 import { useRoute } from 'vue-router'
 export default {

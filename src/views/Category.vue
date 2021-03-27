@@ -78,7 +78,7 @@ import { reactive, onMounted, ref, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 import navBar from '@/components/NavBar'
 import listScroll from '@/components/ListScroll'
-import { getCategory } from '@/apis/good'
+import { getCategory } from '@/service/good'
 import { Toast } from 'vant'
 export default {
   components: {
@@ -136,7 +136,8 @@ export default {
     position: fixed;
     left: 0;
     top: 0;
-    .fj();
+    display: flex;
+    justify-content: center;
     .wh(100%, 50px);
     line-height: 50px;
     padding: 0 15px;
@@ -177,7 +178,8 @@ export default {
   }
 }
 .search-wrap {
-  .fj();
+  display: flex;
+  justify-content: center;
   width: 100%;
   margin-top: 50px;
   background: #f8f8f8;
@@ -187,7 +189,7 @@ export default {
     overflow: hidden;
     .nav-side {
       width: 100%;
-      .boxSizing();
+      box-sizing: border-box;
       background: #f8f8f8;
       li {
         width: 100%;
@@ -207,7 +209,7 @@ export default {
     height: 100%;
     padding: 0 10px;
     background: #fff;
-    .boxSizing();
+    box-sizing: border-box;
     .swiper-container {
       width: 100%;
       .swiper-slide {

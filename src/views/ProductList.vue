@@ -59,7 +59,7 @@
 <script>
 import { reactive, toRefs } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { search } from '@/apis/good'
+import { search } from '@/service/good'
 export default {
   setup() {
     const route = useRoute()
@@ -165,12 +165,13 @@ export default {
   z-index: 1000;
   background: #fff;
   .category-header {
-    .fj();
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 50px;
     line-height: 50px;
     padding: 0 15px;
-    .boxSizing();
+    box-sizing: border-box;
     font-size: 15px;
     color: #656771;
     z-index: 10000;
@@ -190,7 +191,7 @@ export default {
       padding: 5px 0;
       color: #232326;
       background: #f7f7f7;
-      .borderRadius(20px);
+      border-radius: 20px;
       .nbSearch {
         padding: 0 5px 0 20px;
         font-size: 17px;
@@ -211,7 +212,7 @@ export default {
       padding: 0 5px;
       color: #fff;
       background: @primary;
-      .borderRadius(5px);
+      border-radius: 5px;
       margin-top: 10px;
     }
   }
@@ -224,7 +225,8 @@ export default {
 }
 .product-list-refresh {
   .product-item {
-    .fj();
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 120px;
     padding: 10px 0;
@@ -233,14 +235,14 @@ export default {
       width: 140px;
       height: 120px;
       padding: 0 10px;
-      .boxSizing();
+      box-sizing: border-box;
     }
     .product-info {
       width: 56%;
       height: 120px;
       padding: 5px;
       text-align: left;
-      .boxSizing();
+      box-sizing: border-box;
       p {
         margin: 0;
       }

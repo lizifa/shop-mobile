@@ -42,7 +42,7 @@
 import { reactive, onMounted, toRefs } from 'vue'
 import navBar from '@/components/NavBar'
 import sHeader from '@/components/SimpleHeader'
-import { getUserInfo } from '@/apis/user'
+import { getUserInfo } from '@/service/user'
 import { useRouter } from 'vue-router'
 export default {
   components: {
@@ -86,11 +86,12 @@ export default {
     top: 0;
     left: 0;
     z-index: 10000;
-    .fj();
+    display: flex;
+    justify-content: center;
     .wh(100%, 44px);
     line-height: 44px;
     padding: 0 10px;
-    .boxSizing();
+    box-sizing: border-box;
     color: #252525;
     background: #fff;
     border-bottom: 1px solid #dcdcdc;
@@ -111,7 +112,7 @@ export default {
       width: 100%;
       height: 100%;
       padding: 25px 20px;
-      .boxSizing();
+      box-sizing: border-box;
       img {
         .wh(60px, 60px);
         border-radius: 50%;

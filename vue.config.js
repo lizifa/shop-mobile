@@ -6,15 +6,7 @@ module.exports = {
     entry: {
       vendors: ['vue', 'vue-router', 'axios', 'vuex'],
       app: './src/main.js'
-    },
-    plugins: [
-      new webpack.ProvidePlugin({
-        mapActions: ['vuex', 'mapActions'],
-        mapMutations: ['vuex', 'mapMutations'],
-        mapGetters: ['vuex', 'mapGetters'],
-        mapState: ['vuex', 'mapState']
-      })
-    ]
+    }
   },
   css: {
     extract: true,

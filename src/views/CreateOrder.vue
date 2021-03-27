@@ -69,9 +69,9 @@
 <script>
 import { reactive, onMounted, toRefs, computed } from 'vue'
 import sHeader from '@/components/SimpleHeader'
-import { getByCartItemIds } from '@/apis/cart'
-import { getDefaultAddress, getAddressDetail } from '@/apis/address'
-import { createOrder, payOrder } from '@/apis/order'
+import { getByCartItemIds } from '@/service/cart'
+import { getDefaultAddress, getAddressDetail } from '@/service/address'
+import { createOrder, payOrder } from '@/service/order'
 import { setLocal, getLocal } from '@/utils/utils'
 import { Toast } from 'vant'
 import { useRoute, useRouter } from 'vue-router'

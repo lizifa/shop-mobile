@@ -53,11 +53,12 @@ export default {
   top: 0;
   left: 0;
   z-index: 10000;
-  .fj();
+  display: flex;
+  justify-content: center;
   .wh(100%, 44px);
   line-height: 44px;
   padding: 0 10px;
-  .boxSizing();
+  box-sizing: border-box;
   color: #252525;
   background: #fff;
   height: 0;
